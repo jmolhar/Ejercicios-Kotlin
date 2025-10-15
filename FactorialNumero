@@ -1,0 +1,13 @@
+fun main() {
+    val numeroFactorial = 10
+    val numero = factorial(numeroFactorial)
+    println("El factorial con bucle for de $numeroFactorial es: $numero")
+}
+
+fun factorial(numero: Int): Int {
+    var numFactorial: Int = 1
+    for (i in 1..numero) {
+        numFactorial = numFactorial * i
+    }
+    return numFactorial
+}
