@@ -1,0 +1,22 @@
+fun main() {
+    val numero = 107
+    val primo = esPrimo(numero)
+    if (primo == true) {
+        println("El $numero es un número primo")
+    } else {
+        println("El $numero NO es un número primo")
+    }
+}
+
+fun esPrimo(numero: Int): Boolean {
+    var primo = true
+    for (i in 2..numero - 1) {
+        if (numero % i == 0) {
+            primo = false
+            break
+        } else {
+            primo = true
+        }
+    }
+    return primo
+}
