@@ -1,0 +1,27 @@
+fun main() {
+    println(descomponerEnPrimos(60).contentToString())
+}
+
+fun descomponerEnPrimos(numero: Int): Array<Int> {
+    
+    var n = numero
+    var factores = IntArray(32)
+    var contador = 0
+    
+    var divisor = 2
+    while (divisor * divisor <= n) {
+        while (n % divisor == 0) {
+            factores[contador] = divisor
+            contador++
+            n /= divisor
+        }
+        divisor++
+    }
+    
+    if (n > 1) {
+        factores[contador] = n
+        contador++
+    }
+    
+    return factores.sliceArray(0 until contador).toTypedArray()
+}
