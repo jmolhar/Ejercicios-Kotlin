@@ -1,0 +1,22 @@
+fun main() {
+    println(mcm(7, 5))
+    println(mcm(8, 12)) 
+}
+
+fun mcm(a: Int, b: Int): Int {
+    val num1 = a
+    val num2 = b
+    
+    var x = num1
+    var y = num2
+    
+    while (y != 0) {
+        val temp = y
+        y = x % y
+        x = temp
+    }
+    
+    val mcd = x
+    
+    return (num1 * num2) / mcd
+}
