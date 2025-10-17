@@ -1,0 +1,32 @@
+fun main() {
+    val cantidad = 10
+    println(numerosPrimos(cantidad).contentToString())
+}
+
+fun numerosPrimos(cantidad: Int): Array<Int> {
+    
+    val primos = Array(cantidad) { 0 }
+    var numero = 2
+    var posicion = 0
+    
+    while (posicion < cantidad) {
+        var esPrimo = true
+        var divisor = 2
+        
+        while (divisor * divisor <= numero) {
+            if (numero % divisor == 0) {
+                esPrimo = false
+                break
+            }
+            divisor++
+        }
+        
+        if (esPrimo) {
+            primos[posicion] = numero
+            posicion++
+        }
+        numero++
+    }
+    
+    return primos
+}
