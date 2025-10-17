@@ -1,0 +1,20 @@
+fun main() {
+    println(factoresPrimos(12))
+}
+
+fun factoresPrimos(numero: Int): List<Int> {
+    
+    val factores = mutableListOf<Int>()
+    var n = numero
+    var divisor = 2
+    
+    while (n > 1) {
+        while (n % divisor == 0) {
+            factores.add(divisor)
+            n = n / divisor
+        }
+        divisor++
+    }
+    
+    return factores
+}
