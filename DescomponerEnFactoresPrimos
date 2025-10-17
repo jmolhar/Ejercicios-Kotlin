@@ -1,0 +1,34 @@
+fun main() {
+    println(factoresPrimos(60).contentToString())
+
+}
+
+fun factoresPrimos(numero: Int): Array<Int> {
+    
+    var n = numero
+    val factores = Array(32) { 0 }
+    var posicion = 0
+    var divisor = 2
+    
+    while (n > 1) {
+        while (n % divisor == 0) {
+            factores[posicion] = divisor
+            posicion++
+            n = n / divisor
+        }
+        divisor++
+        
+        if (divisor * divisor > n && n > 1) {
+            factores[posicion] = n
+            posicion++
+            break
+        }
+    }
+    
+    val resultado = Array(posicion) { 0 }
+    for (i in 0 until posicion) {
+        resultado[i] = factores[i]
+    }
+    
+    return resultado
+}
