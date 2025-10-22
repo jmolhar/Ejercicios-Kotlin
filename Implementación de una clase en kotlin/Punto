@@ -1,0 +1,65 @@
+import kotlin.math.sqrt
+import kotlin.math.pow
+
+// Clase de un punto en el plano cartesiano 2D
+class Punto(val x: Double, val y: Double) {
+    
+    // Constructor secundario (se inicializa en 0,0)
+    constructor() : this(0.0, 0.0)
+    
+    fun mover(nuevoX: Double, nuevoY: Double): Punto {
+        return Punto(nuevoX, nuevoY)
+    }
+    
+    // Calcula la distancia entre este punto y otro
+    fun distancia(otro: Punto): Double {
+        val diferenciaX = otro.x - this.x
+        val diferenciaY = otro.y - this.y
+        return sqrt(diferenciaX.pow(2) + diferenciaY.pow(2))
+    }
+    
+    // Sobrecarga del operador +
+    operator fun plus(otro: Punto): Punto {
+        return Punto(this.x + otro.x, this.y + otro.y)
+    }
+    
+    // Sobrecarga del operador -
+    operator fun minus(otro: Punto): Punto {
+        return Punto(this.x - otro.x, this.y - otro.y)
+    }
+    
+    override fun equals(other: Any?): Boolean {
+        if (other !is Punto) return false
+        return this.x == other.x && this.y == other.y
+    }
+}
+
+fun main() {
+    val p1 = Punto(4.0, 1.0)
+    val p2 = Punto(6.0, 7.0)
+    val origen = Punto()
+    
+    println("Punto 1: (${p1.x}, ${p1.y})")
+    println("Punto 2: (${p2.x}, ${p2.y})")
+    println("Origen: (${origen.x}, ${origen.y})")
+    println()
+    
+    val p1Movido = p1.mover(9.0, 13.0)
+    println("P1 movido a: (${p1Movido.x}, ${p1Movido.y})")
+    println()
+    
+    val dist = p1.distancia(p2)
+    println("Distancia entre P1 y P2: $dist")
+    println()
+    
+    val suma = p1 + p2
+    println("P1 + P2 = (${suma.x}, ${suma.y})")
+    
+    val resta = p2 - p1
+    println("P2 - P1 = (${resta.x}, ${resta.y})")
+    println()
+    
+    val p3 = Punto(4.0, 1.0)
+    println("¿P1 es igual a P3? ${p1 == p3}")	// Ejemplo de true
+    println("¿P1 es igual a P2? ${p1 == p2}")  // Ejemeplo de false
+}
